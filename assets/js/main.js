@@ -52,11 +52,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // 4.1 Menu Data
     // ----------------------
     const drinks = [
-      { name: "Mintcha Bloom", desc: "Refreshing matcha latte infused with cooling mint syrup.", img: "menu/mintcha-bloom.jpg", category: "matcha", badge: "Signature" },
-      { name: "Ichigo Shortcha", desc: "Creamy matcha latte blended with strawberry purée and ice cream.", img: "menu/ichigo-shortcha.jpg", category: "matcha", badge: "Premium" },
-      { name: "Shiro Mint Latte", desc: "Smooth white chocolate mint latte with velvety cold foam.", img: "menu/shiro-mint.jpg", category: "matcha" },
-      { name: "Matcha Muse", desc: "Classic matcha latte.", img: "menu/matcha-muse.jpg", category: "matcha" },
-      { name: "Kinako Brûlée", desc: "Rich matcha latte with caramelized banana and kinako.", img: "menu/kinako-brulee.jpg", category: "matcha" },
+      { name: "Mintcha Bloom", desc: "Refreshing matcha latte infused with cooling mint syrup.", img: "assets/images/menu/mintcha-bloom.jpg", category: "matcha", badge: "Signature" },
+      { name: "Ichigo Shortcha", desc: "Creamy matcha latte blended with strawberry purée and ice cream.", img: "assets/images/menu/ichigo-shortcha.jpg", category: "matcha", badge: "Premium" },
+      { name: "Shiro Mint Latte", desc: "Smooth white chocolate mint latte with velvety cold foam.", img: "assets/images/menu/shiro-mint.jpg", category: "matcha" },
+      { name: "Matcha Muse", desc: "Classic matcha latte.", img: "assets/images/menu/matcha-muse.jpg", category: "matcha" },
+      { name: "Kinako Brûlée", desc: "Rich matcha latte with caramelized banana and kinako.", img: "assets/images/menu/kinako-brulee.jpg", category: "matcha" },
       { name: "Coming Soon Seasonal Drinks", desc: "Stay tuned for our limited-time collabs and festive specials!", img: "menu/seasonal-placeholder.jpg", category: "seasonal" }
       // Add more drinks if needed
     ];
