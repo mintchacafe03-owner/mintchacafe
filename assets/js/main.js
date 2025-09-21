@@ -136,3 +136,66 @@ if (whatsappBtn) {
     console.log("User clicked WhatsApp button.");
   });
 }
+
+// ==========================
+// Charity Calendar
+// ==========================
+const calendarGrid = document.querySelector('.calendar-grid');
+const monthYearLabel = document.getElementById('monthYear');
+let currentDate = new Date();
+
+function renderCalendar(date) {
+  if (!calendarGrid || !monthYearLabel) return;
+
+  const year = date.getFullYear();
+  const month = date.getMonth();
+
+  // Update month-year label
+  monthYearLabel.textContent = date.toLocaleString('default', { month: 'long', year: 'numeric' });
+
+  // Remove previous days but keep day labels
+  calendarGrid.querySelectorAll('.calendar-day').forEach(d => d.remove());
+
+  const firstDay = new Date(year, month, 1).getDay();
+  const lastDate = new Date(year, month + 1, 0).getDate();
+
+  // Blank slots for offset
+  for (let i = 0; i < firstDay; i++) {
+    const emptyDiv = document.createElement('div');
+    emptyDiv.className = 'calendar-day empty';
+    calendarGrid.appendChild(emptyDiv);
+  }
+
+  // Populate actual days
+  let fridayCount = 0;
+  for (let i = 1; i <= lastDate; i++) {
+    const dayDiv = document.createElement('div');
+    dayDiv.className = 'calendar-day';
+    dayDiv.textContent = i;
+
+    const day = new Date(year, month, i);
+    if (day.getDay() === 5) { // Friday
+      fridayCount++;
+      if (fridayCount === 3) {
+        // 3rd Friday: greyed out for charity
+        dayDiv.classList.add('friday-charity');
+      }
+    }
+
+    calendarGrid.appendChild(dayDiv);
+  }
+}
+
+// Initial render
+renderCalendar(currentDate);
+
+// Month navigation
+document.getElementById('prevMonth')?.addEventListener('click', () => {
+  currentDate.setMonth(currentDate.getMonth() - 1);
+  renderCalendar(currentDate);
+});
+
+document.getElementById('nextMonth')?.addEventListener('click', () => {
+  currentDate.setMonth(currentDate.getMonth() + 1);
+  renderCalendar(currentDate);
+});

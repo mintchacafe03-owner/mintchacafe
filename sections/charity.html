@@ -1,10 +1,41 @@
-<div class="charity">
-  <h2>Charity & FFG Collaborations</h2>
-  <div class="charity-grid">
-    <div class="charity-card">
-      <img src="assets/images/ffg1.jpg" alt="Food for Good Event">
-      <h3>Food for Good</h3>
-      <p>Partnering with FFG to support communities in need through meaningful initiatives.</p>
+<section id="charity" class="charity">
+  <h2>Charity & Food For Gelandangan (FFG)</h2>
+
+  <div class="charity-container">
+
+    <!-- Left content: info, description -->
+    <div class="charity-left">
+      <p>
+        Join our charity events! Every 3rd week, Friday is open for volunteers. Check the calendar on the right for available dates.
+      </p>
+      <!-- Optional: add images, instructions, or CTA button -->
+      <button class="btn-charity">Join Now</button>
     </div>
+
+    <!-- Right side: Calendar -->
+    <div class="charity-right">
+      <div class="charity-calendar">
+        <!-- Calendar header -->
+        <div class="calendar-header">
+          <button id="prevMonth" aria-label="Previous Month">&#8249;</button>
+          <h3 id="monthYear">September 2025</h3>
+          <button id="nextMonth" aria-label="Next Month">&#8250;</button>
+        </div>
+
+        <!-- Calendar grid -->
+        <div class="calendar-grid">
+          <!-- Day labels -->
+          <div class="day-label">Sun</div>
+          <div class="day-label">Mon</div>
+          <div class="day-label">Tue</div>
+          <div class="day-label">Wed</div>
+          <div class="day-label">Thu</div>
+          <div class="day-label">Fri</div>
+          <div class="day-label">Sat</div>
+          <!-- JS will inject days here -->
+        </div>
+      </div>
+    </div>
+
   </div>
-</div>
+</section>
