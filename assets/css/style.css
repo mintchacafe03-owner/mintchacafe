@@ -384,11 +384,45 @@ body.dark-mode .charity-card {
 /* =========================
    Testimonial Section
 ========================= */
+.testimony {
+  padding: 100px 2rem;
+  background: linear-gradient(135deg, #d9f9e3, #a7d7a8);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Decorative floating shapes */
+.testimony::before {
+  content: '';
+  position: absolute;
+  top: -50px;
+  left: -50px;
+  width: 200px;
+  height: 200px;
+  background: rgba(76, 175, 80, 0.15);
+  border-radius: 50%;
+  z-index: 0;
+}
+
+.testimony::after {
+  content: '';
+  position: absolute;
+  bottom: -50px;
+  right: -50px;
+  width: 250px;
+  height: 250px;
+  background: rgba(46, 125, 50, 0.15);
+  border-radius: 50%;
+  z-index: 0;
+}
+
 .testimony h2 {
   text-align: center;
   font-size: 2.5rem;
-  color: #4caf50;
-  margin-bottom: 2rem;
+  color: #2e7d32;
+  margin-bottom: 3rem;
+  position: relative;
+  z-index: 1;
 }
 
 .testimonial-carousel-wrapper {
@@ -397,6 +431,7 @@ body.dark-mode .charity-card {
   max-width: 1200px;
   margin: 0 auto;
   position: relative;
+  z-index: 1;
 }
 
 .testimonial-carousel {
@@ -408,28 +443,40 @@ body.dark-mode .charity-card {
 
 .testimonial-card {
   min-width: 300px;
-  background: #e8f5e9;
+  background: rgba(255, 255, 255, 0.85); /* semi-transparent for depth */
   border-radius: 15px;
-  padding: 1rem;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  padding: 1.5rem;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
   flex-shrink: 0;
   text-align: center;
+  position: relative;
 }
 
 .testimonial-card p {
   font-style: italic;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
+  color: #276749;
 }
 
 .testimonial-card span {
   font-weight: bold;
-  color: #2e7d32;
+  color: #1b5e20;
+  display: block;
+  margin-top: 0.5rem;
 }
 
 /* Keyframes for continuous scroll */
 @keyframes scrollCarousel {
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); } /* adjust -50% if needed */
+}
+
+/* Responsive adjustments */
+@media (max-width:768px){
+  .testimonial-card {
+    min-width: 250px;
+    padding: 1rem;
+  }
 }
 
 /* =========================
