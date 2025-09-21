@@ -1,0 +1,557 @@
+/* =========================
+   1️⃣ Reset & Base
+========================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  line-height: 1.6;
+  background-color: #fdfcfb;
+  color: #333;
+  scroll-behavior: smooth;
+}
+
+/* Dark Mode */
+body.dark-mode {
+  background-color: #1e1e1e;
+  color: #f5f5f5;
+}
+
+/* =========================
+   2️⃣ Navbar
+========================= */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  position: fixed;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(5px);
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+body.dark-mode .navbar {
+  background: rgba(30,30,30,0.95);
+}
+
+.navbar .logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #4caf50;
+  text-decoration: none;
+}
+
+.navbar .nav-links {
+  display: flex;
+  list-style: none;
+  gap: 1.5rem;
+}
+
+.navbar .nav-links a {
+  text-decoration: none;
+  color: inherit;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.navbar .nav-links a:hover {
+  color: #4caf50;
+}
+
+#darkModeToggle {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+/* =========================
+   3️⃣ Sections Base
+========================= */
+section {
+  padding: 100px 2rem 60px; /* account for fixed navbar */
+  min-height: 100vh;
+}
+
+/* =========================
+   4️⃣ Hero Section
+========================= */
+/* Hero Section Gradient we put in home html */
+
+/* =========================
+   5️⃣ Menu Section
+========================= */
+.menu-section {
+  padding: 100px 2rem 60px;
+  background-color: #fdfcfb;
+}
+
+.menu-section h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  color: #4caf50;
+  margin-bottom: 2rem;
+}
+
+/* Filter Buttons */
+.filter-buttons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.filter-buttons button {
+  padding: 0.5rem 1rem;
+  border: 1px solid #4caf50;
+  background: none;
+  color: #4caf50;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s;
+}
+
+.filter-buttons button.active,
+.filter-buttons button:hover {
+  background-color: #4caf50;
+  color: #fff;
+}
+
+/* Drinks Grid */
+.drink-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+  gap: 2rem;
+}
+
+.drink-card {
+  background: #fff;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  text-align: center;
+  transition: transform 0.3s;
+  position: relative;
+}
+
+.drink-card:hover {
+  transform: translateY(-5px);
+}
+
+.drink-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+
+.drink-card h4 {
+  margin: 0.5rem 0;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.drink-card p {
+  font-size: 0.95rem;
+  color: #666;
+  padding: 0 0.5rem 1rem;
+}
+
+/* Premium / Signature Badge */
+.badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: #2e7d32;
+  color: #fff;
+  padding: 0.3rem 0.6rem;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+body.dark-mode .drink-card {
+  background: #2b2b2b;
+}
+
+body.dark-mode .drink-card p {
+  color: #ccc;
+}
+
+/* Seasonal / Premium Highlight */
+.drink-card.premium {
+  border: 2px solid gold;
+  background: linear-gradient(145deg, #fff9f0, #fdfcfb);
+  box-shadow: 0 6px 20px rgba(255, 215, 0, 0.25);
+  position: relative;
+}
+
+.drink-card.premium .badge {
+  background-color: gold;
+  color: #2e7d32;
+}
+
+/* =========================
+   6️⃣ About Section
+========================= */
+.premium-about {
+  padding: 100px 2rem;
+  background: linear-gradient(135deg, #f0fdf4, #d9f99d);
+}
+
+.about-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.about-container h2 {
+  font-size: 3rem;
+  color: #2f855a;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.about-story {
+  font-size: 1.15rem;
+  margin-bottom: 2rem;
+  color: #276749;
+  line-height: 1.8;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeSlideUp 1s forwards;
+}
+
+.about-details {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.about-block {
+  flex: 1 1 45%;
+  background: #ffffffcc;
+  padding: 1.5rem;
+  border-radius: 15px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeSlideUp 1s forwards;
+}
+
+.about-block:nth-child(1) { animation-delay: 0.3s; }
+.about-block:nth-child(2) { animation-delay: 0.6s; }
+
+.about-block h3 {
+  color: #1b5e20;
+  margin-bottom: 0.8rem;
+  font-size: 1.5rem;
+}
+
+.about-block ul {
+  list-style: disc;
+  padding-left: 1.2rem;
+  text-align: left;
+  color: #2e7d32;
+}
+
+.about-images {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.about-images img {
+  width: 45%;
+  border-radius: 15px;
+  object-fit: cover;
+  transition: transform 0.3s;
+}
+
+.about-images img:hover {
+  transform: scale(1.05);
+}
+
+/* Animation Keyframes */
+@keyframes fadeSlideUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media(max-width:768px){
+  .about-details {
+    flex-direction: column;
+  }
+  .about-block {
+    flex: 1 1 100%;
+  }
+  .about-images img {
+    width: 100%;
+  }
+}
+
+/* =========================
+   7️⃣ Events & Charity
+========================= */
+.events, .charity {
+  background: #f5f5f5;
+  padding-top: 80px;
+}
+
+body.dark-mode .events,
+body.dark-mode .charity {
+  background: #1a1a1a;
+}
+
+.events h2, .charity h2 {
+  text-align: center;
+  font-size: 2rem;
+  color: #4caf50;
+  margin-bottom: 2rem;
+}
+
+.event-grid, .charity-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+  gap: 2rem;
+  padding: 0 2rem;
+}
+
+.event-card, .charity-card {
+  background: #fff;
+  padding: 1rem;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  transition: transform 0.3s;
+}
+
+body.dark-mode .event-card,
+body.dark-mode .charity-card {
+  background: #2b2b2b;
+}
+
+.event-card:hover,
+.charity-card:hover {
+  transform: scale(1.03);
+}
+
+.event-img-wrapper, .charity-img-wrapper {
+  width: 100%;
+  aspect-ratio: 1/1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  padding: 0.5rem;
+}
+
+.event-img-wrapper img, .charity-img-wrapper img {
+  max-width: 90%;
+  max-height: 90%;
+  object-fit: contain;
+  border-radius: 10px;
+  margin-bottom: 0.8rem;
+}
+
+.event-info h3, .charity-info h3 {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #2e7d32;
+  margin-bottom: 0.3rem;
+}
+
+.event-info p, .charity-info p {
+  font-size: 0.95rem;
+  color: #555;
+}
+
+/* =========================
+   Testimonial Section
+========================= */
+.testimony h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  color: #4caf50;
+  margin-bottom: 2rem;
+}
+
+.testimonial-carousel-wrapper {
+  overflow: hidden;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.testimonial-carousel {
+  display: flex;
+  gap: 1rem;
+  width: max-content;
+  animation: scrollCarousel 60s linear infinite;
+}
+
+.testimonial-card {
+  min-width: 300px;
+  background: #e8f5e9;
+  border-radius: 15px;
+  padding: 1rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  flex-shrink: 0;
+  text-align: center;
+}
+
+.testimonial-card p {
+  font-style: italic;
+  margin-bottom: 0.5rem;
+}
+
+.testimonial-card span {
+  font-weight: bold;
+  color: #2e7d32;
+}
+
+/* Keyframes for continuous scroll */
+@keyframes scrollCarousel {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); } /* adjust -50% if needed */
+}
+
+/* =========================
+   9️⃣ Contact Section
+========================= */
+.contact h2 {
+  text-align: center;
+  font-size: 2rem;
+  color: #4caf50;
+  margin-bottom: 2rem;
+}
+
+.contact form {
+  max-width: 500px;
+  margin: 0 auto 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.contact input, .contact textarea {
+  padding: 0.8rem;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+.contact button {
+  padding: 0.8rem;
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.contact button:hover {
+  background-color: #43a047;
+}
+
+.contact-links {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.contact-links a {
+  display: inline-block;
+  margin: 0 0.5rem;
+  color: #4caf50;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.contact-links a:hover {
+  text-decoration: underline;
+}
+
+/* =========================
+   10️⃣ Responsive
+========================= */
+@media (max-width:768px){
+  .hero {
+    flex-direction: column;
+    text-align: center;
+  }
+  .hero-image img {
+    max-width: 300px;
+  }
+  .drink-grid, .event-grid, .charity-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =========================
+   Footer
+========================= */
+.footer {
+  background-color: #2e7d32; /* green */
+  color: #fff;
+  padding: 1.5rem 2rem;
+  margin-top: 3rem;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.footer-text {
+  text-align: center;
+}
+
+.footer-links {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.footer-links a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.footer-links a:hover {
+  color: #c8e6c9; /* light green */
+}
+
+/* Responsive */
+@media (min-width: 768px) {
+  .footer-container {
+    flex-direction: row;
+  }
+  .footer-text {
+    text-align: left;
+  }
+}

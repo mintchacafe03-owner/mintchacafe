@@ -1,0 +1,103 @@
+<!-- Hero Section -->
+<section id="hero" class="hero">
+  <div class="hero-content">
+    <h1 class="hero-title">
+      <span class="block" id="hero-line1">Refresh</span>
+      <span class="block" id="hero-line2">Your Day</span>
+      <span class="block" id="hero-line3">with Mintcha 🍵</span>
+    </h1>
+    <p class="hero-subtitle">Premium Matcha & Creative Tea Drinks, crafted just for you.</p>
+    <a href="#menu" class="hero-btn">Explore Menu</a>
+  </div>
+</section>
+
+<style>
+/* Hero Section */
+.hero {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(-45deg, #b2f2bb, #69db7c, #38a169, #4ade80);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+  text-align: center;
+  padding: 0 1rem;
+}
+
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Hero Text Animations */
+.hero-title {
+  font-size: 3rem;
+  font-weight: 800;
+  color: #1b5e20;
+  margin-bottom: 1rem;
+}
+
+.hero-title .block {
+  display: block;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeSlideUp 1s forwards;
+}
+
+/* Delay for each block */
+#hero-line1 { animation-delay: 0.2s; }
+#hero-line2 { animation-delay: 0.8s; }
+#hero-line3 { animation-delay: 1.4s; }
+
+.hero-subtitle {
+  font-size: 1.2rem;
+  color: #2f855a;
+  margin-bottom: 2rem;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeSlideUp 1s forwards;
+  animation-delay: 2s;
+}
+
+.hero-btn {
+  display: inline-block;
+  padding: 0.8rem 1.5rem;
+  background-color: #2f855a;
+  color: white;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: 600;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeSlideUp 1s forwards;
+  animation-delay: 2.6s;
+  transition: background 0.3s;
+}
+
+.hero-btn:hover {
+  background-color: #276749;
+}
+
+@keyframes fadeSlideUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+</style>
+
+<script>
+// Optional: typing effect for each block
+const lines = ["Refresh", "Your Day", "with Mintcha 🍵"];
+lines.forEach((text, index) => {
+  const element = document.getElementById(`hero-line${index+1}`);
+  let i = 0;
+  const interval = setInterval(() => {
+    element.textContent = text.slice(0, i+1);
+    i++;
+    if (i === text.length) clearInterval(interval);
+  }, 100); // 100ms per character
+});
+</script>
