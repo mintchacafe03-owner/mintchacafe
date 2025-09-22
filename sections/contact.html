@@ -2,11 +2,12 @@
   <h2>Contact Us</h2>
   <p class="contact-subtitle">Have a question or collab idea? Reach us anytime!</p>
 
-  <form action="https://formspree.io/f/yourformid" method="POST">
+  <form id="contact-form" action="https://formspree.io/f/xeorjrkk" method="POST">
     <input type="text" name="name" placeholder="Your Name" required>
     <input type="email" name="_replyto" placeholder="Your Email" required>
     <textarea name="message" placeholder="Your Message" required></textarea>
     <button type="submit">Send Message</button>
+    <p id="form-response" style="display:none; color:green; margin-top:10px;">Message sent! Thank you.</p>
   </form>
 
   <div class="contact-links">
@@ -28,3 +29,36 @@
     </div>
   </div>
 </div>
+
+<script>
+  const form = document.getElementById('contact-form');
+  const responseMessage = document.getElementById('form-response');
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault(); // Prevent page reload
+
+    const formData = new FormData(form);
+
+    fetch(form.action, {
+      method: form.method,
+      body: formData,
+      headers: {
+        'Accept': 'application/json'
+      }
+    })
+    .then(response => {
+      if (response.ok) {
+        responseMessage.style.display = 'block';
+        form.reset();
+      } else {
+        response.json().then(data => {
+          alert(data.error || "Oops! There was a problem submitting your form.");
+        })
+      }
+    })
+    .catch(error => {
+      alert("Oops! There was a problem submitting your form.");
+      console.error(error);
+    });
+  });
+</script>
