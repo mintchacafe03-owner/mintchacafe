@@ -45,86 +45,130 @@ sections.forEach(sec => {
 // 4️⃣ Initialize Features After Sections Load
 // ========================================
 document.addEventListener('DOMContentLoaded', () => {
-  // Delay to ensure all sections loaded
   setTimeout(() => {
 
     // ----------------------
-    // 4.1 Menu Data
+    // 4.1 Drinks Data with Categories + Subcategories
     // ----------------------
     const drinks = [
-      { name: "Mintcha Bloom", desc: "Refreshing matcha latte infused with cooling mint syrup.", img: "assets/images/menu/mintcha-bloom.jpg", category: "matcha", badge: "Signature" },
-      { name: "Ichigo Shortcha", desc: "Creamy matcha latte blended with strawberry purée and ice cream.", img: "assets/images/menu/ichigo-shortcha.jpg", category: "matcha", badge: "Premium" },
-      { name: "Shiro Mint Latte", desc: "Smooth white chocolate mint latte with velvety cold foam.", img: "assets/images/menu/shiro-mint.jpg", category: "matcha" },
-      { name: "Matcha Muse", desc: "Classic matcha latte.", img: "assets/images/menu/matcha-muse.jpg", category: "matcha" },
-      { name: "Kinako Brûlée", desc: "Rich matcha latte with caramelized banana and kinako.", img: "assets/images/menu/kinako-brulee.jpg", category: "matcha" },
-      { name: "Coming Soon Seasonal Drinks", desc: "Stay tuned for our limited-time collabs and festive specials!", img: "menu/seasonal-placeholder.jpg", category: "seasonal" }
-      // Add more drinks if needed
+      // 🌿 Signature
+      { name: "Mintcha Bloom", desc: "Refreshing matcha latte infused with cooling mint syrup.", img: "assets/images/menu/mintcha-bloom.jpg", category: "matcha", subcategory: "matcha", badge: "Signature" },
+
+      // 🌟 Premium
+      { name: "Ichigo Shortcha", desc: "Creamy matcha latte blended with strawberry purée and topped with ice cream.", img: "assets/images/menu/ichigo-shortcha.jpg", category: "matcha", subcategory: "matcha", badge: "Premium" },
+      { name: "Shiro Mint Latte", desc: "Smooth white chocolate mint latte finished with velvety cold foam.", img: "assets/images/menu/shiro-mint.jpg", category: "mint", badge: "Premium" },
+
+      // 🍵 Matcha Latte Series
+      { name: "Matcha Muse", desc: "Our classic and balanced matcha latte.", img: "assets/images/menu/matcha-muse.jpg", category: "matcha", subcategory: "matcha" },
+      { name: "Kinako Brûlée", desc: "Toasty kinako layered with creamy brûlée and matcha.", img: "assets/images/menu/kinako-brulee.jpg", category: "matcha", subcategory: "matcha" },
+      { name: "Gula Kabung Matcha Latte", desc: "Rich matcha latte sweetened with authentic palm sugar (gula kabung).", img: "assets/images/menu/gula-kabung.jpg", category: "matcha", subcategory: "matcha" },
+
+      // 🌱 Mint Creations
+      { name: "Mint Majesty", desc: "Cool and uplifting mint-infused latte with smooth balance.", img: "assets/images/menu/mint-majesty.jpg", category: "mint" },
+      { name: "Frosted Mintcha", desc: "Icy blended drink with refreshing mint and creamy finish.", img: "assets/images/menu/frosted-mintcha.jpg", category: "mint" },
+      { name: "Ichigo Mint Fizz", desc: "Sparkling strawberry and mint refresher, light and bubbly.", img: "assets/images/menu/ichigo-mint-fizz.jpg", category: "mint" },
+
+      // 🍵 Toasted Harmony
+      { name: "Batang Buruk Genmaicha", desc: "Nutty roasted rice tea with nostalgic batang buruk dessert twist.", img: "assets/images/menu/batang-buruk-genmaicha.jpg", category: "matcha", subcategory: "genmaicha" },
+
+      // 🧊 Iced Brews
+      { name: "Cold Brew", desc: "Slow-steeped cold brew coffee with smooth and bold flavor.", img: "assets/images/menu/cold-brew.jpg", category: "coffee" },
+      { name: "Vanilla Sweet Cream Cold Brew", desc: "Cold brew topped with silky vanilla sweet cream.", img: "assets/images/menu/vanilla-cold-brew.jpg", category: "coffee" },
+
+      // 💧 Others
+      { name: "Spritzer Mineral Water", desc: "Refreshing bottled mineral water.", img: "assets/images/menu/spritzer.jpg", category: "others" },
+
+      // 🌸 Seasonal
+      { name: "Coming Soon Seasonal Drinks", desc: "Stay tuned for our limited-time collabs and festive specials!", img: "assets/images/menu/seasonal-placeholder.jpg", category: "seasonal" }
     ];
 
     // ----------------------
-    // 4.2 Populate Drinks in Menu
+    // 4.2 Render Drinks
     // ----------------------
     const drinkGrid = document.querySelector('.drink-grid');
-    function renderDrinks(filter = 'all') {
+    let selectedCategory = "all";
+    let selectedSubCategory = "all";
+
+    function renderDrinks() {
       if(!drinkGrid) return;
       drinkGrid.innerHTML = "";
       drinks.forEach(d => {
-        if(filter !== 'all' && d.category !== filter) return;
+        if (
+          (selectedCategory === "all" || d.category === selectedCategory) &&
+          (selectedSubCategory === "all" || !d.subcategory || d.subcategory === selectedSubCategory)
+        ) {
+          const card = document.createElement('div');
+          card.className = "drink-card";
+          if(d.category === 'seasonal') card.classList.add('premium');
 
-        const card = document.createElement('div');
-        card.className = "drink-card";
-        card.dataset.category = d.category;
-        if(d.category === 'seasonal') card.classList.add('premium');
-
-        card.innerHTML = `
-          ${d.badge ? `<div class="badge">${d.badge}</div>` : ""}
-          <img src="${d.img}" alt="${d.name}">
-          <h4>${d.name}</h4>
-          <p>${d.desc}</p>
-        `;
-        drinkGrid.appendChild(card);
+          card.innerHTML = `
+            ${d.badge ? `<div class="badge">${d.badge}</div>` : ""}
+            <img src="${d.img}" alt="${d.name}">
+            <h4>${d.name}</h4>
+            <p>${d.desc}</p>
+          `;
+          drinkGrid.appendChild(card);
+        }
       });
     }
-    renderDrinks(); // initial render
+    renderDrinks();
 
     // ----------------------
-    // 4.3 Menu Filter Buttons
+    // 4.3 Main Filter Buttons
     // ----------------------
     const filterButtons = document.querySelectorAll('.filter-buttons button');
+    const subFilterContainer = document.querySelector('.sub-filter-buttons');
+    const subFilterButtons = subFilterContainer ? subFilterContainer.querySelectorAll('button') : [];
+
     filterButtons.forEach(btn => {
       btn.addEventListener('click', () => {
         filterButtons.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
-        const category = btn.dataset.category;
-        renderDrinks(category);
+        selectedCategory = btn.dataset.category;
+        selectedSubCategory = "all";
+
+        // Show sub-filters only if category = "matcha"
+        if (selectedCategory === "matcha" && subFilterContainer) {
+          subFilterContainer.style.display = "flex";
+        } else {
+          if (subFilterContainer) subFilterContainer.style.display = "none";
+        }
+
+        renderDrinks();
       });
     });
 
     // ----------------------
-    // 4.4 Testimonial Carousel Auto-Scroll
+    // 4.4 Sub-Filter Buttons (for matcha series)
+    // ----------------------
+    subFilterButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        subFilterButtons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        selectedSubCategory = btn.dataset.subcategory;
+        renderDrinks();
+      });
+    });
+
+    // ----------------------
+    // 4.5 Testimonial Carousel
     // ----------------------
     const carouselWrapper = document.querySelector('.testimonial-carousel-wrapper');
     const carousel = document.querySelector('.testimonial-carousel');
 
     if(carousel && carouselWrapper) {
-      // Duplicate carousel content for seamless loop
       carousel.innerHTML += carousel.innerHTML;
-
       let scrollAmount = 0;
-      const step = 2; // px per frame
-      const speed = 16; // ms per frame
-
       function autoScroll() {
-        scrollAmount += step;
+        scrollAmount += 2;
         if(scrollAmount >= carousel.scrollWidth / 2) scrollAmount = 0;
         carousel.style.transform = `translateX(-${scrollAmount}px)`;
         requestAnimationFrame(autoScroll);
       }
-
       autoScroll();
     }
 
-  }, 300); // wait 300ms for sections to load
+  }, 300);
 });
 
 // ========================================
@@ -137,36 +181,29 @@ if (whatsappBtn) {
   });
 }
 
-// ==========================
-// Charity Calendar
-// ==========================
-const calendarGrid = document.querySelector('.calendar-grid');
+// ========================================
+// 6️⃣ Charity Calendar
+// ========================================
+const calendarGrid = document.getElementById('calendarDays');
 const monthYearLabel = document.getElementById('monthYear');
 let currentDate = new Date();
 
 function renderCalendar(date) {
   if (!calendarGrid || !monthYearLabel) return;
-
   const year = date.getFullYear();
   const month = date.getMonth();
-
-  // Update month-year label
   monthYearLabel.textContent = date.toLocaleString('default', { month: 'long', year: 'numeric' });
-
-  // Remove previous days but keep day labels
-  calendarGrid.querySelectorAll('.calendar-day').forEach(d => d.remove());
+  calendarGrid.innerHTML = "";
 
   const firstDay = new Date(year, month, 1).getDay();
   const lastDate = new Date(year, month + 1, 0).getDate();
 
-  // Blank slots for offset
   for (let i = 0; i < firstDay; i++) {
     const emptyDiv = document.createElement('div');
     emptyDiv.className = 'calendar-day empty';
     calendarGrid.appendChild(emptyDiv);
   }
 
-  // Populate actual days
   let fridayCount = 0;
   for (let i = 1; i <= lastDate; i++) {
     const dayDiv = document.createElement('div');
@@ -174,27 +211,32 @@ function renderCalendar(date) {
     dayDiv.textContent = i;
 
     const day = new Date(year, month, i);
-    if (day.getDay() === 5) { // Friday
-      fridayCount++;
-      if (fridayCount === 3) {
-        // 3rd Friday: greyed out for charity
-        dayDiv.classList.add('friday-charity');
-      }
+    const today = new Date();
+    if (
+      day.getDate() === today.getDate() &&
+      day.getMonth() === today.getMonth() &&
+      day.getFullYear() === today.getFullYear()
+    ) {
+      dayDiv.classList.add('today');
+      dayDiv.title = "Today";
     }
 
+    if (day.getDay() === 5) { 
+      fridayCount++;
+      if (fridayCount === 3) {
+        dayDiv.classList.add('friday-charity');
+        dayDiv.title = "Charity Day (FFG)";
+      }
+    }
     calendarGrid.appendChild(dayDiv);
   }
 }
-
-// Initial render
 renderCalendar(currentDate);
 
-// Month navigation
 document.getElementById('prevMonth')?.addEventListener('click', () => {
   currentDate.setMonth(currentDate.getMonth() - 1);
   renderCalendar(currentDate);
 });
-
 document.getElementById('nextMonth')?.addEventListener('click', () => {
   currentDate.setMonth(currentDate.getMonth() + 1);
   renderCalendar(currentDate);

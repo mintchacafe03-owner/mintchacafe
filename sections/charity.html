@@ -8,7 +8,6 @@
       <p>
         Join our charity events! Every 3rd week, Friday is open for volunteers. Check the calendar on the right for available dates.
       </p>
-      <!-- Optional: add images, instructions, or CTA button -->
       <button class="btn-charity">Join Now</button>
     </div>
 
@@ -18,13 +17,12 @@
         <!-- Calendar header -->
         <div class="calendar-header">
           <button id="prevMonth" aria-label="Previous Month">&#8249;</button>
-          <h3 id="monthYear">September 2025</h3>
+          <h3 id="monthYear"></h3>
           <button id="nextMonth" aria-label="Next Month">&#8250;</button>
         </div>
 
-        <!-- Calendar grid -->
-        <div class="calendar-grid">
-          <!-- Day labels -->
+        <!-- Day labels -->
+        <div class="calendar-labels">
           <div class="day-label">Sun</div>
           <div class="day-label">Mon</div>
           <div class="day-label">Tue</div>
@@ -32,10 +30,11 @@
           <div class="day-label">Thu</div>
           <div class="day-label">Fri</div>
           <div class="day-label">Sat</div>
-          <!-- JS will inject days here -->
         </div>
+
+        <!-- Calendar grid (days will be injected here) -->
+        <div class="calendar-grid" id="calendarDays"></div>
       </div>
     </div>
 
   </div>
-</section>
