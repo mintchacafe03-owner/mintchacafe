@@ -33,10 +33,20 @@ body {
   overflow-x: hidden;
 }
 
-/* Dark Mode */
+/* 🌙 Dark Mode */
 body.dark-mode {
-  background: linear-gradient(135deg, #1e1e1e, #2c2c2c);
   color: #f5f5f5;
+  background: linear-gradient(
+    135deg,
+    #0d0d0d,
+    #1a1a1a,
+    #232323,
+    #1c2620,
+    #16211d,
+    #1b2a29
+  );
+  background-size: 200% 200%;
+  animation: gradientFlowDark 30s ease infinite;
 }
 
 /* Global Floating Shapes */
@@ -68,7 +78,24 @@ body::after {
   animation: floatShapes 18s ease-in-out infinite alternate-reverse;
 }
 
+/* 🌙 Dark Mode Floating Shapes */
+body.dark-mode::before {
+  background: #4caf50; /* soft green glow */
+  opacity: 0.15;
+}
+
+body.dark-mode::after {
+  background: #81c784; /* lighter green accent */
+  opacity: 0.1;
+}
+
 @keyframes gradientFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes gradientFlowDark {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
