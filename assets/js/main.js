@@ -184,60 +184,73 @@ if (whatsappBtn) {
 // ========================================
 // 6️⃣ Charity Calendar
 // ========================================
-const calendarGrid = document.getElementById('calendarDays');
-const monthYearLabel = document.getElementById('monthYear');
-let currentDate = new Date();
+document.addEventListener("DOMContentLoaded", () => {
+  const calendarGrid = document.getElementById('calendarDays');
+  const monthYearLabel = document.getElementById('monthYear');
+  const prevBtn = document.getElementById('prevMonth');
+  const nextBtn = document.getElementById('nextMonth');
+  let currentDate = new Date();
 
-function renderCalendar(date) {
-  if (!calendarGrid || !monthYearLabel) return;
-  const year = date.getFullYear();
-  const month = date.getMonth();
-  monthYearLabel.textContent = date.toLocaleString('default', { month: 'long', year: 'numeric' });
-  calendarGrid.innerHTML = "";
+  function renderCalendar(date) {
+    if (!calendarGrid || !monthYearLabel) return;
+    const year = date.getFullYear();
+    const month = date.getMonth();
+    monthYearLabel.textContent = date.toLocaleString('default', { month: 'long', year: 'numeric' });
+    calendarGrid.innerHTML = "";
 
-  const firstDay = new Date(year, month, 1).getDay();
-  const lastDate = new Date(year, month + 1, 0).getDate();
+    const firstDay = new Date(year, month, 1).getDay();
+    const lastDate = new Date(year, month + 1, 0).getDate();
 
-  for (let i = 0; i < firstDay; i++) {
-    const emptyDiv = document.createElement('div');
-    emptyDiv.className = 'calendar-day empty';
-    calendarGrid.appendChild(emptyDiv);
-  }
-
-  let fridayCount = 0;
-  for (let i = 1; i <= lastDate; i++) {
-    const dayDiv = document.createElement('div');
-    dayDiv.className = 'calendar-day';
-    dayDiv.textContent = i;
-
-    const day = new Date(year, month, i);
-    const today = new Date();
-    if (
-      day.getDate() === today.getDate() &&
-      day.getMonth() === today.getMonth() &&
-      day.getFullYear() === today.getFullYear()
-    ) {
-      dayDiv.classList.add('today');
-      dayDiv.title = "Today";
+    // empty slots before month start
+    for (let i = 0; i < firstDay; i++) {
+      const emptyDiv = document.createElement('div');
+      emptyDiv.className = 'calendar-day empty';
+      calendarGrid.appendChild(emptyDiv);
     }
 
-    if (day.getDay() === 5) { 
-      fridayCount++;
-      if (fridayCount === 3) {
-        dayDiv.classList.add('friday-charity');
-        dayDiv.title = "Charity Day (FFG)";
+    let fridayCount = 0;
+    for (let i = 1; i <= lastDate; i++) {
+      const dayDiv = document.createElement('div');
+      dayDiv.className = 'calendar-day';
+      dayDiv.textContent = i;
+
+      const day = new Date(year, month, i);
+      const today = new Date();
+
+      // highlight today
+      if (
+        day.getDate() === today.getDate() &&
+        day.getMonth() === today.getMonth() &&
+        day.getFullYear() === today.getFullYear()
+      ) {
+        dayDiv.classList.add('today');
+        dayDiv.title = "Today";
       }
-    }
-    calendarGrid.appendChild(dayDiv);
-  }
-}
-renderCalendar(currentDate);
 
-document.getElementById('prevMonth')?.addEventListener('click', () => {
-  currentDate.setMonth(currentDate.getMonth() - 1);
+      // highlight 3rd Friday
+      if (day.getDay() === 5) { 
+        fridayCount++;
+        if (fridayCount === 3) {
+          dayDiv.classList.add('friday-charity');
+          dayDiv.title = "Charity Day (FFG)";
+        }
+      }
+
+      calendarGrid.appendChild(dayDiv);
+    }
+  }
+
+  // initial render
   renderCalendar(currentDate);
-});
-document.getElementById('nextMonth')?.addEventListener('click', () => {
-  currentDate.setMonth(currentDate.getMonth() + 1);
-  renderCalendar(currentDate);
+
+  // navigation
+  prevBtn?.addEventListener('click', () => {
+    currentDate.setMonth(currentDate.getMonth() - 1);
+    renderCalendar(currentDate);
+  });
+
+  nextBtn?.addEventListener('click', () => {
+    currentDate.setMonth(currentDate.getMonth() + 1);
+    renderCalendar(currentDate);
+  });
 });
