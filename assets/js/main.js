@@ -56,17 +56,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // 🌟 Premium
       { name: "Ichigo Shortcha", desc: "Creamy matcha latte blended with strawberry purée and topped with ice cream.", img: "assets/images/menu/ichigo-shortcha.jpg", category: "matcha", subcategory: "matcha", badge: "Premium" },
-      { name: "Shiro Mint Latte", desc: "Smooth white chocolate mint latte finished with velvety cold foam.", img: "assets/images/menu/shiro-mint.jpg", category: "mint", badge: "Premium" },
+      { name: "Mint Melona", desc: "Creamy blend of sweet honeydew and refreshing mint, swirled with milk for a smooth, nostalgic twist inspired by the classic Melona ice cream.", img: "assets/images/menu/mint-melona.jpg", category: "mint", badge: "Premium" },
 
       // 🍵 Matcha Latte Series
       { name: "Matcha Muse", desc: "Our classic and balanced matcha latte.", img: "assets/images/menu/matcha-muse.jpg", category: "matcha", subcategory: "matcha" },
-      { name: "Kinako Brûlée", desc: "Toasty kinako layered with creamy brûlée and matcha.", img: "assets/images/menu/kinako-brulee.jpg", category: "matcha", subcategory: "matcha" },
-      { name: "Gula Kabung Matcha Latte", desc: "Rich matcha latte sweetened with authentic palm sugar (gula kabung).", img: "assets/images/menu/gula-kabung.jpg", category: "matcha", subcategory: "matcha" },
 
       // 🌱 Mint Creations
       { name: "Mint Majesty", desc: "Cool and uplifting mint-infused latte with smooth balance.", img: "assets/images/menu/mint-majesty.jpg", category: "mint" },
       { name: "Frosted Mintcha", desc: "Icy blended drink with refreshing mint and creamy finish.", img: "assets/images/menu/frosted-mintcha.jpg", category: "mint" },
-      { name: "Ichigo Mint Fizz", desc: "Sparkling strawberry and mint refresher, light and bubbly.", img: "assets/images/menu/ichigo-mint-fizz.jpg", category: "mint" },
 
       // 🍵 Toasted Harmony
       { name: "Batang Buruk Genmaicha", desc: "Nutty roasted rice tea with nostalgic batang buruk dessert twist.", img: "assets/images/menu/batang-buruk-genmaicha.jpg", category: "matcha", subcategory: "genmaicha" },
