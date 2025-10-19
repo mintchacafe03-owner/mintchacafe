@@ -5,10 +5,35 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mintcha</title>
   <link rel="stylesheet" href="assets/css/style.css">
+
+  <!-- ==========================================================
+       WORK IN PROGRESS / WEBSITE UPGRADE CONTROL
+       ----------------------------------------------------------
+       When the website is under construction or being updated:
+       1. Uncomment the script below.
+       2. The user will be redirected to: sections/work-in-progress.html
+       
+       When the website is fully ready:
+       1. Comment out or remove this script.
+       ========================================================== -->
+  
+  <script>
+    // Redirect new visitors to the "Work In Progress" page
+    const shown = localStorage.getItem("mintchaPopupShown");
+    if (!shown) {
+      window.location.href = "sections/work-in-progress.html";
+    }
+  </script>
+  
 </head>
 <body>
 
-  <!-- Navbar -->
+  <!-- ==========================================================
+       NAVBAR SECTION
+       ----------------------------------------------------------
+       This section contains Mintcha’s main navigation links.
+       Update links or icons here if new sections are added.
+       ========================================================== -->
   <header>
     <nav class="navbar">
       <a href="#home" class="logo">Mintcha</a>
@@ -25,7 +50,13 @@
     </nav>
   </header>
 
-  <!-- Section placeholders -->
+  <!-- ==========================================================
+       MAIN CONTENT SECTIONS
+       ----------------------------------------------------------
+       Each section below will later be replaced or loaded 
+       dynamically from the "sections" folder.
+       Add or remove sections here when updating the website.
+       ========================================================== -->
   <main>
     <section id="home"></section>
     <section id="menu"></section>
@@ -36,24 +67,33 @@
     <section id="contact"></section>
   </main>
 
-  <!-- Footer -->
-<!-- Footer -->
-<footer class="footer">
-  <div class="footer-container">
-    <div class="footer-text">
-      <p>© <span id="currentYear"></span> Mintcha. All rights reserved.</p>
-      <p>Website developed by Ahmad Isshahrul Isskandar</p>
+  <!-- ==========================================================
+       FOOTER SECTION
+       ----------------------------------------------------------
+       Update contact/social links here.
+       Developer credit is included below.
+       ========================================================== -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-text">
+        <p>© <span id="currentYear"></span> Mintcha. All rights reserved.</p>
+        <p>Website developed by Ahmad Isshahrul Isskandar</p>
+      </div>
+      <div class="footer-links">
+        <a href="https://instagram.com/mintcha.my" target="_blank" rel="noopener noreferrer">Instagram</a>
+        <a href="https://youtube.com/@mintcha.my" target="_blank" rel="noopener noreferrer">YouTube</a>
+        <a href="https://tiktok.com/@mintcha.my" target="_blank" rel="noopener noreferrer">TikTok</a>
+        <a href="https://wa.me/60182663482" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+      </div>
     </div>
-    <div class="footer-links">
-      <a href="https://instagram.com/mintcha.my" target="_blank" rel="noopener noreferrer">Instagram</a>
-      <a href="https://youtube.com/@mintcha.my" target="_blank" rel="noopener noreferrer">YouTube</a>
-      <a href="https://tiktok.com/@mintcha.my" target="_blank" rel="noopener noreferrer">TikTok</a>
-      <a href="https://wa.me/60182663482" target="_blank" rel="noopener noreferrer">WhatsApp</a>
-    </div>
-  </div>
-</footer>
+  </footer>
 
-
+  <!-- ==========================================================
+       MAIN SCRIPT
+       ----------------------------------------------------------
+       Handles dark mode, interactions, and core JS functions.
+       ========================================================== -->
   <script src="assets/js/main.js"></script>
+
 </body>
 </html>

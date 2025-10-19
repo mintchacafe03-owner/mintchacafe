@@ -1,0 +1,210 @@
+/* =========================================
+   MINTCHA WORK IN PROGRESS PAGE
+   ========================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+:root {
+  --mint: #89c997;
+  --dark-mint: #2e8b57;
+  --bg-gradient: linear-gradient(135deg, #e8f5e9 0%, #ffffff 100%);
+  --shadow-glow: 0 0 40px rgba(46, 139, 87, 0.3);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--bg-gradient);
+  overflow: hidden;
+  font-family: "Poppins", sans-serif;
+}
+
+/* =========================================
+   POPUP OVERLAY BASE
+   ========================================= */
+.popup-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: fadeIn 1.5s ease;
+  transition: opacity 0.8s ease;
+}
+
+.popup-glow {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at center, rgba(137, 201, 151, 0.3) 0%, transparent 70%);
+  filter: blur(80px);
+  z-index: 1;
+}
+
+.popup-box {
+  position: relative;
+  z-index: 5;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 30px;
+  padding: 3rem 2rem;
+  text-align: center;
+  width: 90%;
+  max-width: 480px;
+  box-shadow: var(--shadow-glow);
+  backdrop-filter: blur(15px);
+  transform: translateY(30px);
+  animation: floatUp 1.5s ease forwards;
+}
+
+/* =========================================
+   LOGO + TITLE
+   ========================================= */
+.logo-circle {
+  width: 90px;
+  height: 90px;
+  margin: 0 auto 1rem auto;
+  background: linear-gradient(145deg, #a5d6a7, #66bb6a);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: var(--shadow-glow);
+  animation: pulse 3s infinite ease-in-out;
+}
+
+.mintcha-logo {
+  width: 55px;
+  height: 55px;
+  object-fit: contain;
+}
+
+.title {
+  font-size: 1.6rem;
+  color: var(--dark-mint);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.subtitle {
+  font-size: 0.95rem;
+  color: #444;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+/* =========================================
+   PROGRESS BAR
+   ========================================= */
+.progress-bar {
+  width: 80%;
+  height: 6px;
+  background: #e0e0e0;
+  border-radius: 50px;
+  overflow: hidden;
+  margin: 0 auto 2rem auto;
+  position: relative;
+}
+
+.progress-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--dark-mint), var(--mint));
+  animation: loading 4s ease-in-out forwards;
+  border-radius: 50px;
+}
+
+/* =========================================
+   BUTTON DESIGN
+   ========================================= */
+.enter-btn {
+  background: linear-gradient(135deg, var(--dark-mint), var(--mint));
+  color: white;
+  border: none;
+  border-radius: 12px;
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 5px 15px rgba(46, 139, 87, 0.3);
+}
+
+.enter-btn:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 8px 25px rgba(46, 139, 87, 0.4);
+}
+
+/* =========================================
+   ANIMATED STEAM
+   ========================================= */
+.steam-container {
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  z-index: 0;
+}
+
+.steam {
+  width: 8px;
+  height: 20px;
+  background: rgba(137, 201, 151, 0.4);
+  border-radius: 50%;
+  animation: steamRise 3s infinite ease-in-out;
+}
+
+.steam:nth-child(2) {
+  animation-delay: 1s;
+}
+
+.steam:nth-child(3) {
+  animation-delay: 2s;
+}
+
+/* =========================================
+   KEYFRAMES
+   ========================================= */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes floatUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+}
+
+@keyframes loading {
+  0% { width: 0%; }
+  100% { width: 100%; }
+}
+
+@keyframes steamRise {
+  0% {
+    opacity: 0;
+    transform: translateY(20px) scale(0.5);
+  }
+  50% {
+    opacity: 0.7;
+    transform: translateY(-10px) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-40px) scale(0.8);
+  }
+}
