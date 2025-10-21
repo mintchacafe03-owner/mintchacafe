@@ -1,27 +1,35 @@
 document.addEventListener("DOMContentLoaded", () => {
   const enterButton = document.getElementById("enterSite");
+  const overlay = document.querySelector(".popup-overlay");
+  const progressFill = document.querySelector(".progress-fill");
 
-  // ✅ Only show once per browser session
-  const shown = sessionStorage.getItem("mintchaPopupShown");
-  if (shown) {
+  // ✅ Only show if user hasn't entered before
+  if (localStorage.getItem("mintchaPopupShown")) {
     window.location.href = "../index.html";
+    return;
   }
 
-  // ✅ Auto animation: redirect after loading bar finishes if user waits
+  // ✅ Animate progress bar
+  progressFill.style.width = "0%";
   setTimeout(() => {
-    if (!sessionStorage.getItem("mintchaPopupShown")) {
+    progressFill.style.transition = "width 4s ease-in-out";
+    progressFill.style.width = "100%";
+  }, 100);
+
+  // ✅ Auto redirect after progress finishes
+  setTimeout(() => {
+    if (!localStorage.getItem("mintchaPopupShown")) {
       fadeOutAndRedirect();
     }
-  }, 5000); // auto-enter after 5 seconds
+  }, 4200);
 
-  // ✅ Manual button click
+  // ✅ Manual click
   enterButton.addEventListener("click", () => fadeOutAndRedirect());
 
-  // 🔄 Smooth fade-out + redirect
   function fadeOutAndRedirect() {
-    const overlay = document.querySelector(".popup-overlay");
+    overlay.style.transition = "opacity 0.8s ease";
     overlay.style.opacity = "0";
-    sessionStorage.setItem("mintchaPopupShown", "true");
+    localStorage.setItem("mintchaPopupShown", "true");
     setTimeout(() => {
       window.location.href = "../index.html";
     }, 800);
