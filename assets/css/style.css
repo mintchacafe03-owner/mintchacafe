@@ -1,4 +1,164 @@
 /* =========================
+   📱 Enhanced Mobile Responsive Styles
+========================= */
+
+/* Small Tablets and Phones (max-width: 768px) */
+@media (max-width: 768px) {
+  /* Navbar */
+  .navbar {
+    padding: 0.8rem 1.2rem;
+    flex-wrap: wrap;
+  }
+
+  .navbar .logo {
+    font-size: 1.3rem;
+  }
+
+  .navbar .nav-links {
+    display: none; /* hidden until hamburger shown */
+    flex-direction: column;
+    background: rgba(255,255,255,0.98);
+    width: 100%;
+    text-align: center;
+    padding: 1rem 0;
+    border-top: 1px solid rgba(0,0,0,0.1);
+  }
+
+  .navbar.active .nav-links {
+    display: flex;
+  }
+
+  /* Optional hamburger menu (you can add JS toggle later) */
+  .navbar .menu-toggle {
+    display: block;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: #4caf50;
+    cursor: pointer;
+  }
+
+  /* Adjust Section Padding */
+  section {
+    padding: 80px 1.5rem 50px;
+  }
+
+  /* Menu Section */
+  .menu-section h2 {
+    font-size: 2.2rem;
+  }
+
+  .drink-card img {
+    height: 180px;
+  }
+
+  .filter-buttons button,
+  .sub-filter-buttons button {
+    font-size: 0.85rem;
+    padding: 0.5rem 1rem;
+  }
+
+  /* About Section */
+  .about-container h2 {
+    font-size: 2.2rem;
+  }
+  .about-story {
+    font-size: 1rem;
+  }
+  .about-block h3 {
+    font-size: 1.25rem;
+  }
+
+  /* Events */
+  .event-grid {
+    grid-template-columns: 1fr;
+    padding: 0 1rem;
+  }
+  .event-card {
+    width: 100%;
+  }
+
+  /* Charity */
+  .charity h2 {
+    font-size: 2rem;
+  }
+  .calendar-day {
+    padding: 0.4rem;
+    font-size: 0.8rem;
+  }
+
+  /* Testimonials */
+  .testimony h2 {
+    font-size: 1.8rem;
+  }
+
+  /* Contact */
+  .contact h2 {
+    font-size: 2rem;
+  }
+  .contact form {
+    padding: 0 0.5rem;
+  }
+  .contact input,
+  .contact textarea {
+    font-size: 0.95rem;
+  }
+  .contact button {
+    font-size: 1rem;
+    padding: 0.8rem;
+  }
+
+  /* Footer */
+  .footer {
+    text-align: center;
+    padding: 1rem;
+  }
+}
+
+/* Extra Small Devices (max-width: 480px) */
+@media (max-width: 480px) {
+  .navbar .logo {
+    font-size: 1.2rem;
+  }
+
+  .menu-section h2,
+  .about-container h2,
+  .charity h2,
+  .events h2 {
+    font-size: 1.8rem;
+  }
+
+  .drink-card h4 {
+    font-size: 1.1rem;
+  }
+  .drink-card p {
+    font-size: 0.85rem;
+  }
+
+  .about-story {
+    font-size: 0.95rem;
+  }
+
+  .testimonial-card {
+    flex: 0 0 95%;
+    padding: 1rem;
+  }
+
+  .contact input,
+  .contact textarea {
+    padding: 0.8rem;
+  }
+
+  .contact button {
+    padding: 0.8rem;
+  }
+
+  .footer {
+    font-size: 0.9rem;
+  }
+}
+
+/* =========================
    1️⃣ Reset & Base
 ========================= */
 * {
