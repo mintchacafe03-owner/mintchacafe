@@ -16,7 +16,6 @@
        When the website is fully ready:
        1. Comment out or remove this script.
        ========================================================== 
-  
   <script>
     // Redirect new visitors to the "Work In Progress" page
     const shown = localStorage.getItem("mintchaPopupShown");
@@ -24,19 +23,22 @@
       window.location.href = "sections/work-in-progress.html";
     }
   </script>
-  
+  -->
 </head>
-<body>-->
 
+<body>
   <!-- ==========================================================
        NAVBAR SECTION
        ----------------------------------------------------------
-       This section contains Mintcha’s main navigation links.
-       Update links or icons here if new sections are added.
+       Now includes a mobile-friendly hamburger menu.
        ========================================================== -->
   <header>
     <nav class="navbar">
       <a href="#home" class="logo">Mintcha</a>
+
+      <!-- 🌿 Hamburger Button (Visible on Mobile) -->
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">☰</button>
+
       <ul class="nav-links">
         <li><a href="#home">Home</a></li>
         <li><a href="#menu">Menu</a></li>
@@ -46,16 +48,15 @@
         <li><a href="#testimony">Testimony</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
-      <button id="darkModeToggle">🌙</button>
+
+      <button id="darkModeToggle" aria-label="Toggle dark mode">🌙</button>
     </nav>
   </header>
 
   <!-- ==========================================================
        MAIN CONTENT SECTIONS
        ----------------------------------------------------------
-       Each section below will later be replaced or loaded 
-       dynamically from the "sections" folder.
-       Add or remove sections here when updating the website.
+       Each section can be loaded dynamically or updated later.
        ========================================================== -->
   <main>
     <section id="home"></section>
@@ -71,7 +72,6 @@
        FOOTER SECTION
        ----------------------------------------------------------
        Update contact/social links here.
-       Developer credit is included below.
        ========================================================== -->
   <footer class="footer">
     <div class="footer-container">
@@ -91,9 +91,8 @@
   <!-- ==========================================================
        MAIN SCRIPT
        ----------------------------------------------------------
-       Handles dark mode, interactions, and core JS functions.
+       Handles dark mode, hamburger menu, and interactions.
        ========================================================== -->
   <script src="assets/js/main.js"></script>
-
 </body>
 </html>

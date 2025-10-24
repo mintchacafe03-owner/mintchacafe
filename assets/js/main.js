@@ -1,3 +1,32 @@
+// ============================
+// 🌿 HAMBURGER MENU TOGGLE
+// ============================
+document.addEventListener("DOMContentLoaded", function () {
+  const menuToggle = document.getElementById("menuToggle");
+  const navbar = document.querySelector(".navbar");
+
+  menuToggle.addEventListener("click", () => {
+    navbar.classList.toggle("active");
+    menuToggle.classList.toggle("active");
+
+    // Change icon between ☰ and ✖
+    if (menuToggle.classList.contains("active")) {
+      menuToggle.textContent = "✖";
+    } else {
+      menuToggle.textContent = "☰";
+    }
+  });
+
+  // Optional: Close menu when clicking a link
+  document.querySelectorAll(".nav-links a").forEach(link => {
+    link.addEventListener("click", () => {
+      navbar.classList.remove("active");
+      menuToggle.classList.remove("active");
+      menuToggle.textContent = "☰";
+    });
+  });
+});
+
 // ========================================
 // 1️⃣ Dark Mode Toggle
 // ========================================
