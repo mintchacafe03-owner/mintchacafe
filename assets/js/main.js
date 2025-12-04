@@ -85,7 +85,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // 🌟 Premium
       { name: "Ichigo Shortcha", desc: "Creamy matcha latte blended with strawberry purée and topped with ice cream.", img: "assets/images/menu/ichigo-shortcha.jpg", category: "matcha", subcategory: "matcha", badge: "Premium" },
-      { name: "Mint Melona", desc: "Creamy blend of sweet honeydew and refreshing mint, swirled with milk for a smooth, nostalgic twist inspired by the classic Melona ice cream.", img: "assets/images/menu/mint-melona.jpg", category: "mint", badge: "Premium" },
 
       // 🍵 Matcha Latte Series
       { name: "Matcha Muse", desc: "Our classic and balanced matcha latte.", img: "assets/images/menu/matcha-muse.jpg", category: "matcha", subcategory: "matcha" },
@@ -93,6 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
       // 🌱 Mint Creations
       { name: "Mint Majesty", desc: "Cool and uplifting mint-infused latte with smooth balance.", img: "assets/images/menu/mint-majesty.jpg", category: "mint" },
       { name: "Frosted Mintcha", desc: "Icy blended drink with refreshing mint and creamy finish.", img: "assets/images/menu/frosted-mintcha.jpg", category: "mint" },
+      { name: "Mint Melona", desc: "Creamy blend of sweet honeydew and refreshing mint, swirled with milk for a smooth, nostalgic twist inspired by the classic Melona ice cream.", img: "assets/images/menu/mint-melona.jpg", category: "mint", },
 
       // 🍵 Toasted Harmony
       { name: "Batang Buruk Genmaicha", desc: "Nutty roasted rice tea with nostalgic batang buruk dessert twist.", img: "assets/images/menu/batang-buruk-genmaicha.jpg", category: "matcha", subcategory: "genmaicha" },
